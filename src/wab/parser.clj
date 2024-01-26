@@ -2,7 +2,6 @@
 ;; Parser
 ;; Parses WAB source code into an AST
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (ns wab.parser
   (:require [instaparse.core :as insta]))
 
