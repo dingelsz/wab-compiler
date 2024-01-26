@@ -1,0 +1,11 @@
+func fact(n) {
+  var i = 1;
+  var acc = 1;
+  while i < n {
+    acc = acc * i;
+    i = i + 1;
+  }
+  return acc;
+}
+var res = fact(5);
+print res;

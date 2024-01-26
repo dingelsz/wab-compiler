@@ -1,0 +1,68 @@
+program : WS* statements WS*
+
+statements : { statement WS* COMMENT? WS* }       
+
+statement : print_statement
+          | variable_definition
+          | if_statement
+          | while_statement
+          | func_definition
+          | return_statement
+          | assignment_statement
+
+print_statement : PRINT WS+ expression (WS* SEMI)+
+
+variable_definition : VAR WS+ NAME WS* ASSIGN WS* expression (WS* SEMI+)
+
+assignment_statement : NAME WS* ASSIGN WS* expression (WS* SEMI+)
+
+if_statement : IF WS+ relation WS* LBRACE WS* statements WS* RBRACE WS* ELSE WS* LBRACE WS* statements WS* RBRACE
+
+while_statement : WHILE WS+ relation WS* LBRACE WS* statements WS* RBRACE
+
+func_definition : FUNC WS+ NAME WS* LPAREN WS* NAME WS* RPAREN WS* LBRACE WS* statements WS* RBRACE
+
+return_statement : RETURN WS+ expression (WS* SEMI+)
+
+expression : term WS* PLUS WS* term
+	   | term WS* TIMES WS* term
+           | term
+
+relation : expression WS* LT WS* expression
+         | expression WS* EQ WS* expression
+
+term : INTEGER
+     | call
+     | NAME
+     | LPAREN WS* expression WS* RPAREN
+
+call : NAME WS* LPAREN WS* expression WS* RPAREN
+
+
+(*----------------------------------------------------------------------------*)
+(* --------------------------------TERMINALS-------------------------------- *) 
+(*----------------------------------------------------------------------------*)
+
+
+NAME    = #"[a-zA-Z][a-zA-Z0-9]*"
+INTEGER = #"[0-9]+"
+PLUS    = "+"
+TIMES   = "*"
+LT      = "<"
+EQ      = "=="
+ASSIGN  = "="
+LPAREN  = "("
+RPAREN  = ")"
+LBRACE  = "{"
+RBRACE  = "}"
+SEMI    = ";"
+ELSE    = "else"
+IF      = "if"
+FUNC    = "func"
+PRINT   = "print"
+RETURN  = "return"
+VAR     = "var"
+WHILE   = "while"
+WS      = #"[ \t\n]"
+NEWLINE = "\n"
+COMMENT = #"\/\/.*"
