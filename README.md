@@ -1,6 +1,6 @@
 # WABC
 
-A compiler for a simple C like language that compiles down to llvm IR. Thrown toegether over a week to learn more about compilers and clojure.
+A compiler for a simple C like language that compiles down to llvm IR. Thrown together over a week while following a [dabeaz course](https://dabeaz.com/compiler.html) in order to learn about compilers and clojure.
 
 ```
 func fact(n) {
@@ -17,5 +17,3 @@ print res;
 ```
 
 See compiler.clj for a high level overview of the compiler.
-
-## L
